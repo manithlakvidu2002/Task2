@@ -2,111 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>DOM Manipulation with JQuery</title>
-    <link rel="stylesheet" href="bootstrap-5.3.2-dist/css/bootstrap.css">
+    <title>Mouse Move Event</title>
     <style>
-        #con {
-            width: 200px;
-            height: 200px;
+        /* Add some initial CSS to style the <h1> element */
+        #myHeading {
+            position: absolute;
+            transition: transform 0.2s ease;
         }
     </style>
 </head>
 <body>
+<h1 id="myHeading">Hello There..!</h1>
 
-
-<section class="container mt-5">
-    <h1 id="main">Traversing Methods in Jquery</h1>
-    <section class="row">
-        <div class="col-3">
-            <input class="form-control" type="text" placeholder="input">
-            <button id="btn" class="btn btn-danger mt-2">Test</button>
-
-        </div>
-        <div class="col-5 overflow-hidden">
-            <ol class="list-group overflow-hidden" id="task">
-
-            </ol>
-        </div>
-        <div class="col">
-            <div id="con" class="shadow">
-                <img src="sss" class="w-100 h-100" alt="">
-            </div>
-        </div>
-    </section>
-    <section class="row mt-5">
-        <div class="col-12">
-            <ul id="ul" class="list-group">
-                <li>append()</li>
-                <li>prepend()</li>
-                <li>remove()</li>
-                <li>text()</li>
-                <li>val()</li>
-                <li>click()</li>
-                <li>attr()</li>
-                <li>css</li>
-            </ul>
-        </div>
-    </section>
-</section>
-
-
-<script src="bootstrap-5.3.2-dist/js/code.jquery.com_jquery-3.7.1.min.js"></script>
 <script>
-    $('#main').css({
-        "color": 'red',
-        "font-size": '40px'
+    // Get a reference to the <h1> element
+    var heading = document.getElementById("myHeading");
+
+    // Add a mousemove event listener to the entire document
+    document.addEventListener("mousemove", function(event) {
+        // Calculate the new position of the <h1> element based on the mouse cursor position
+        var x = event.clientX;
+        var y = event.clientY;
+
+        // Set the position of the <h1> element to follow the mouse cursor
+        heading.style.transform = `translate(${x}px, ${y}px)`;
     });
-
-
-    //so how to get and change text of an element.?
-    $('h1').text(); //will return the text content of the h1
-
-    //so then how to change?
-    $('h1').text("jQuery is Awesome.! :-D"); // you can change text like this
-
-
-    //Then how to get input filed typed values from a text filed.?
-    $('input').val(); // val() method will input field typed value
-
-    //if you want to change the input value
-    $('input').val('https://blog.ijse.lk/web/blog/wp-content/uploads/2019/09/1.jpg');
-
-
-    //so then how to remove elements.?
-    // $('li').remove();
-
-
-    //how to add elements using jQuery
-    //you can simply add html element as a string
-    //no need of creating dom element
-    $('#task').append('<li class="list-group-item">B</li>');
-    $('#task').prepend('<li class="list-group-item">A</li>');
-
-
-    //how to access attributes.?
-    //so if you want to get an attribute value
-    $('img').attr('src'); //you can call this
-
-    //if you want to change an attribute value
-    $('img').attr('src', ''); // you can pass second param to attr method
-
-    $("#btn").click(function () {
-        console.log("Working")
-    });
-
-
-
-
-    $("#btn").click(function (){
-        let value=$("input").val();
-        let li=`<li class="list-group-item">${value}</li>`;
-        $('#task').append(li);
-        $("img").attr('src',value);
-    });
-
-
-
-
 </script>
+
 </body>
 </html>
